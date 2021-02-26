@@ -51,6 +51,7 @@ const SecondLevelEvent = ({ desc, start_time, id, outright, settled }) => {
         <Link href={`/event/${id}`}>
             <a>
                 <h4>{desc}</h4>
+                <DateTime unix={start_time}/>
             </a>
         </Link>
     )
@@ -60,7 +61,7 @@ const SecondLevelEvent = ({ desc, start_time, id, outright, settled }) => {
 
 
 export async function getServerSideProps(context) {
-    const data = await fetch(`http://services.skybet.com/sportsapi/v2/football/events/1?api_user=`)
+    const data = await fetch(`https://trending.popularbets.betviewapi.com/all.json`)
         .then(res => res.json())
         .then(resp => resp)
         .catch((error) => {
